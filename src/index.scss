@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wdth@80&display=swap');
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(0, 0%, 20%);
+  border-radius: 100vw;
+  border: 0.20em solid white;
+}
+
+body {
+  font-family: 'open sans';
+  padding: 20px 40px;
+  overflow: overlay;
+
+  @media screen and (max-width: 500px) {
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+p::first-letter {
+	text-transform: uppercase;
+}
