@@ -1,7 +1,6 @@
 import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { AuthError, AuthErrorCodes } from 'firebase/auth';
 
 import { selectCurrentUser } from '../../store/user/user.selector';
 
