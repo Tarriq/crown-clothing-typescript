@@ -36,7 +36,7 @@ const Checkout = () => {
           <span>Remove</span>
         </HeaderBlock>
       </CheckoutHeader>
-      {cartItems ? (
+      {cartItems.length ? (
         cartItems.map(cartItem => (
           <CheckoutItem key={cartItem.id} cartItem={cartItem} />
         ))
