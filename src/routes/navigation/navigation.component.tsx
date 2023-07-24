@@ -25,7 +25,9 @@ const Navigation = () => {
   const signOutUser = () => {
     dispatch(signOutStart());
     dispatch(setIsCartOpen(false));
-    navigate('/auth');
+    setTimeout(() => {
+      navigate('/auth');
+    }, 10);
   };
 
   return (
