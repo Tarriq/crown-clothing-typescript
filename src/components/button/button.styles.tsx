@@ -42,7 +42,7 @@ export const GoogleSignInButton = styled(BaseButton)`
     color: white;
   }
   &:active {
-    background-color: hsl(217, 80 %, 50 %);
+    background-color: hsl(217, 80%, 50%);
     transition: 0s;
   }
 `;

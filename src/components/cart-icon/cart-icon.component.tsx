@@ -16,7 +16,7 @@ const CartIcon = () => {
 
 	const toggleIsCartOpen = () => {
 		if (currentUser) dispatch(setIsCartOpen(!isCartOpen))
-		else alert('Sign in to see your cart items')
+		else alert('Please sign in to see your cart items')
 	};
 
   return (
