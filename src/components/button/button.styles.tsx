@@ -6,7 +6,7 @@ export const BaseButton = styled.button`
   min-width: 165px;
   width: auto;
   height: 50px;
-  letter-spacing: 0.5px;
+  letter-spacing: .5px;
   font-size: 15px;
   background-color: black;
   color: white;
@@ -18,7 +18,6 @@ export const BaseButton = styled.button`
   justify-content: center;
   align-items: center;
   transition: 200ms;
-	padding: 0;
 
   &:hover {
     background-color: white;

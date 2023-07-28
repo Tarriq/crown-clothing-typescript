@@ -1,5 +1,4 @@
 import { useState, FormEvent, ChangeEvent } from 'react';
-import { AuthError, AuthErrorCodes } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 
 import FormInput from '../form-input/form-input.component';
@@ -75,7 +74,6 @@ const SignUpForm = () => {
           name='confirmPassword'
           value={confirmPassword}
         />
-
         <Button type='submit'>Sign Up</Button>
       </form>
     </SignUpContainer>

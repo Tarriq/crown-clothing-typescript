@@ -5,14 +5,15 @@ import { addItemToCart } from '../../store/cart/cart.action';
 import { selectCurrentUser } from '../../store/user/user.selector';
 import { useNavigate } from 'react-router-dom';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
-import { ProductCardCoantainer, Footer } from './product-card.styles';
+import { ProductCardContainer, Footer } from './product-card.styles';
 import { CategoryItem } from '../../store/categories/category.types';
 
 type ProductCardProps = {
 	product: CategoryItem
+	ownCategory?: boolean
 }
 
-const ProductCard: FC<ProductCardProps> = ({ product }) => {
+const ProductCard: FC<ProductCardProps> = ({ product, ownCategory }) => {
   const { name, price, imageUrl } = product;
   const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <ProductCardCoantainer>
+    <ProductCardContainer ownCategory={ownCategory}>
       <img src={imageUrl} alt={name} loading='lazy' />
       <Footer>
         <span className='name'>{name}</span>
@@ -40,7 +41,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
         onClick={addProductToCard}>
         Add to cart
       </Button>
-    </ProductCardCoantainer>
+    </ProductCardContainer>
   );
 };
 

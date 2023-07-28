@@ -5,7 +5,8 @@ export const SignInContainer = SignUpContainer;
 
 export const ButtonsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 50px;
+	justify-content: center;
 `;
 
 export const InvalidInputError = styled.p`

@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 
-export const ProductCardCoantainer = styled.div`
-  width: 100%;
+type ProductCardProps = {
+	ownCategory?: boolean
+}
+
+export const ProductCardContainer = styled.div<ProductCardProps>`
+  width: ${({ ownCategory }) => (ownCategory ? 'unset' : '350px')};
+  min-width: ${({ ownCategory }) => (ownCategory ? '20vw' : 'unset')};
   display: flex;
   flex-direction: column;
   height: 350px;
@@ -17,7 +22,7 @@ export const ProductCardCoantainer = styled.div`
   button {
     width: 80%;
     position: absolute;
-    top: 255px;
+    bottom: 35px;
     display: none;
   }
 
@@ -31,21 +36,42 @@ export const ProductCardCoantainer = styled.div`
       display: flex;
     }
   }
+  @media screen and (max-width: 800px) {
+    button {
+      display: block;
+      opacity: 0.9;
+      min-width: unset;
+      padding: 0 10px;
+    }
+
+    &:hover {
+      img {
+        opacity: unset;
+      }
+
+      button {
+        opacity: unset;
+      }
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    width: 80vw;
+  }
 `;
 
 export const Footer = styled.div`
   width: 100%;
-  height: 5%;
   display: flex;
   justify-content: space-between;
   font-size: 18px;
 
   .name {
     width: 90%;
-    margin-bottom: 15px;
   }
 
   .price {
-    width: 10%;
+    width: 20%;
+		text-align: end;
   }
 `;

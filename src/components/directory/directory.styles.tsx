@@ -6,4 +6,8 @@ export const DirectoryContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0;
+
+	@media screen and (max-width: 450px) {
+		flex-flow: column;
+	}
 `;

@@ -1,3 +1,4 @@
+import { useState, MouseEvent } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -21,6 +22,15 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
+  const [showName, setShowName] = useState(false);
+
+  const toggleName = (event: MouseEvent) => {
+    event.preventDefault();
+    setShowName(true);
+    setTimeout(() => {
+      setShowName(false);
+    }, 2000);
+  };
 
   const signOutUser = () => {
     dispatch(signOutStart());
@@ -35,9 +45,11 @@ const Navigation = () => {
       <NavigationContainer>
         <LogoContainer to='/'>
           <CrownLogo className='logo' />
-          {currentUser && (
-            <DisplayName>
-              Signed in as:{' '}
+          {currentUser?.displayName && (
+            <DisplayName
+              showName={showName}
+              onClick={event => toggleName(event)}>
+              <span className='material-icons'>account_circle</span>
               <span className='name'>{currentUser.displayName}</span>
             </DisplayName>
           )}
