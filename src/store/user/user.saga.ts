@@ -23,6 +23,14 @@ import {
   AdditionalInformation,
 } from '../../utils/firebase/firebase.utils';
 
+import {
+  IncorrectPasswordPopup,
+  UserNotFoundPopup,
+	NetworkErrorPopup,
+	EmailInUsePopup,
+	SignupErrorPopup
+} from '../../utils/popup/popup';
+
 export function* getSnapshotFromUserAuth(
   userAuth: User,
   additionalDetails?: AdditionalInformation
@@ -70,22 +78,22 @@ export function* signInWithEmail({
   } catch (error) {
     switch ((error as AuthError).code) {
       case AuthErrorCodes.INVALID_PASSWORD:
-        alert('Incorrect password for email');
-        yield * put(signInFailed(error as Error));
+        IncorrectPasswordPopup.show()
+        yield* put(signInFailed(error as Error));
         break;
 
       case AuthErrorCodes.USER_DELETED:
-        alert('No user associated with this email');
-        yield * put(signInFailed(error as Error));
+        UserNotFoundPopup.show()
+        yield* put(signInFailed(error as Error));
         break;
 
       case AuthErrorCodes.NETWORK_REQUEST_FAILED:
-        alert('Please check your internet connection');
-        yield * put(signInFailed(error as Error));
+        NetworkErrorPopup.show()
+        yield* put(signInFailed(error as Error));
         break;
 
       default:
-        yield * put(signInFailed(error as Error));
+        yield* put(signInFailed(error as Error));
     }
   }
 }
@@ -104,11 +112,11 @@ export function* signUp({
       const { user } = userCredential;
       yield* put(signUpSuccess(user, { displayName }));
     }
-	} catch (error) {
-		if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
-      alert('Cannot create user, email already in use.');
+  } catch (error) {
+    if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
+      EmailInUsePopup.show()
     } else {
-      console.log('user creation encountered an error', error);
+      SignupErrorPopup.show()
     }
     yield* put(signUpFailed(error as Error));
   }

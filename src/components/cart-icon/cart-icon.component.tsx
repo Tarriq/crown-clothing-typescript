@@ -6,18 +6,19 @@ import {
 } from '../../store/cart/cart.selector';
 import { setIsCartOpen } from '../../store/cart/cart.action';
 import { ShoppingIcon, CartIconContainer, ItemCount } from './cart-icon.styles';
+import {CartIconPopup} from '../../utils/popup/popup';
 
 const CartIcon = () => {
   const dispatch = useDispatch();
 
   const cartCount = useSelector(selectCartCount);
-	const isCartOpen = useSelector(selectIsCartOpen);
-	const currentUser = useSelector(selectCurrentUser);
+  const isCartOpen = useSelector(selectIsCartOpen);
+  const currentUser = useSelector(selectCurrentUser);
 
-	const toggleIsCartOpen = () => {
-		if (currentUser) dispatch(setIsCartOpen(!isCartOpen))
-		else alert('Please sign in to see your cart items')
-	};
+  const toggleIsCartOpen = () => {
+    if (currentUser) dispatch(setIsCartOpen(!isCartOpen));
+    else CartIconPopup.show();
+  };
 
   return (
     <CartIconContainer onClick={toggleIsCartOpen}>
